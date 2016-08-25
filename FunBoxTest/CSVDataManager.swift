@@ -18,10 +18,6 @@ class CSVDataManager {
     static func loadTestDataIfNeeded() {
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        try! uiRealm.write {
-            uiRealm.deleteAll()
-        }
-        
         if !defaults.boolForKey("didLoadTestData") {
             if let fileURL = NSBundle.mainBundle().URLForResource("data", withExtension:"csv") {
                 if let data = NSData(contentsOfURL: fileURL) {
