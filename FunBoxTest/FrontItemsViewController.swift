@@ -18,16 +18,15 @@ class FrontItemsViewController: UIPageViewController {
     
     var notificationToken: NotificationToken? = nil
     
-    private var isAnimating = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setViewControllers([viewControllerForIndex(0)], direction: .Forward, animated: false, completion: nil)
 
         dataSource = self
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.setViewControllers([viewControllerForIndex(0)], direction: .Forward, animated: false, completion: nil)
         super.viewWillAppear(animated)
     }
     
@@ -77,9 +76,6 @@ extension FrontItemsViewController: UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController,
                             viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        if isAnimating {
-            return nil
-        }
         
         if let oldItemViewController = viewController as? FrontendItemViewController {
             if let itemIndex = oldItemViewController.itemIndex where itemIndex > 0 {
@@ -90,17 +86,8 @@ extension FrontItemsViewController: UIPageViewControllerDataSource {
         return nil
     }
     
-    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
-        isAnimating = true
-    }
-
-    
     func pageViewController(pageViewController: UIPageViewController,
                             viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        
-        if isAnimating {
-            return nil
-        }
         
         if let oldItemViewController = viewController as? FrontendItemViewController {
             if let itemIndex = oldItemViewController.itemIndex where itemIndex < shopItems.count - 1 {
@@ -113,18 +100,3 @@ extension FrontItemsViewController: UIPageViewControllerDataSource {
     
     
 }
-
-extension FrontItemsViewController: UIPageViewControllerDelegate {
-    func pageViewController(pageViewController: UIPageViewController,
-                            didFinishAnimating finished: Bool,
-                                               previousViewControllers: [UIViewController],
-                                               transitionCompleted completed: Bool) {
-        
-        if (completed || finished) {
-            isAnimating = false
-        }
-        
-        // more codes follow
-    }
-}
-

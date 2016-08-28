@@ -38,7 +38,7 @@ class ShopItem: Object {
     }
     
     var displayPrice: String {
-        return priceString + " $"
+        return priceString + " руб."
     }
     
 }
