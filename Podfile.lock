@@ -24,11 +24,13 @@ PODS:
   - Realm/Headers (1.0.2)
   - RealmSwift (1.0.2):
     - Realm (= 1.0.2)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - CSwiftV
   - PromiseKit
   - RealmSwift
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   CSwiftV: 2560532e2e5b04d95c36b0f49a8dc745071fa525
@@ -36,7 +38,8 @@ SPEC CHECKSUMS:
   PromiseKit: ef54f61501541bf18a87b25115c372184d180cea
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 227936dd6d2774f3328a585d7f9465b2b1fa234c
+PODFILE CHECKSUM: df4e634948900007a26c957a2de9eb403b210381
 
 COCOAPODS: 1.0.1

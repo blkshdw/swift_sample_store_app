@@ -10,8 +10,12 @@ import Foundation
 import RealmSwift
 import PromiseKit
 
+let OBJECT_CHANGED = "objectChanged"
+
 enum DataError: ErrorType {
     case NoItemsLeft
+    case InvalidJSONData
+    case Unknown(error: String)
 }
 
 class ShopDataManager {
@@ -19,18 +23,12 @@ class ShopDataManager {
     
     func buyItem(item: ShopItem) -> Promise<ShopItem> {
         return Promise {fullfill, reject in
-            let realm = try! Realm()
             if item.amount > 0 {
-                do {
-                    try realm.write {
-                        item.amount -= 1
-                        try realm.commitWrite()
-                    }
-                } catch {
-                    reject(error)
+                editItem(item) {
+                    item.amount -= 1
+                }.then { item in
+                    fullfill(item)
                 }
-                
-                return fullfill(item)
             } else {
                 reject(DataError.NoItemsLeft)
             }
@@ -40,10 +38,16 @@ class ShopDataManager {
     func editItem(item: ShopItem, @noescape closure: Void -> Void) -> Promise<ShopItem> {
         return Promise {fullfill, reject in
             let realm = try! Realm()
-            try! realm.write {
-                closure()
-                try! realm.commitWrite()
+            do {
+                try realm.write {
+                    closure()
+                }
+            } catch {
+                reject(error)
             }
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(OBJECT_CHANGED, object: item.id)
+            
             return fullfill(item)
         }
     }

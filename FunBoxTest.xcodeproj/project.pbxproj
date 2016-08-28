@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		880E6F8A1D6E6EFB0014C35C /* BackEndItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881106521D6E2B5D00C9835C /* BackEndItemViewController.swift */; };
+		880E6F931D722D0B0014C35C /* JSONStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E6F921D722D0B0014C35C /* JSONStorageManager.swift */; };
+		880E6F951D722DBE0014C35C /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880E6F941D722DBE0014C35C /* StorageManager.swift */; };
 		8811064F1D6CE1B400C9835C /* FrontEndItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811064E1D6CE1B400C9835C /* FrontEndItemViewController.swift */; };
 		881106591D6E319200C9835C /* BackEndItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881106581D6E319200C9835C /* BackEndItemsViewController.swift */; };
 		8811065B1D6E436C00C9835C /* BackEndItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811065A1D6E436C00C9835C /* BackEndItemCell.swift */; };
 		883DC2E81D64DAF90022D4CE /* ShopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883DC2E71D64DAF90022D4CE /* ShopItem.swift */; };
-		883DC2EB1D64FAFF0022D4CE /* CSVDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883DC2EA1D64FAFF0022D4CE /* CSVDataManager.swift */; };
+		883DC2EB1D64FAFF0022D4CE /* CSVStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883DC2EA1D64FAFF0022D4CE /* CSVStorageManager.swift */; };
 		88E9E3411D69D3C400A0E3C3 /* ShopDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E9E3401D69D3C400A0E3C3 /* ShopDataManager.swift */; };
 		88F93BD21D465B5200B99B7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F93BD11D465B5200B99B7C /* AppDelegate.swift */; };
 		88F93BD41D465B5200B99B7C /* FrontItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F93BD31D465B5200B99B7C /* FrontItemsViewController.swift */; };
@@ -27,12 +29,14 @@
 		05A7FF323D13F4CAC361B052 /* Pods-FunBoxTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunBoxTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunBoxTest/Pods-FunBoxTest.release.xcconfig"; sourceTree = "<group>"; };
 		4AFF52E89352BFB40127F8AE /* Pods-FunBoxTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunBoxTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunBoxTest/Pods-FunBoxTest.debug.xcconfig"; sourceTree = "<group>"; };
 		665C772B42704612D2A46D66 /* Pods_FunBoxTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunBoxTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		880E6F921D722D0B0014C35C /* JSONStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONStorageManager.swift; sourceTree = "<group>"; };
+		880E6F941D722DBE0014C35C /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		8811064E1D6CE1B400C9835C /* FrontEndItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FrontEndItemViewController.swift; path = ViewControllers/FrontEndItemViewController.swift; sourceTree = "<group>"; };
 		881106521D6E2B5D00C9835C /* BackEndItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackEndItemViewController.swift; sourceTree = "<group>"; };
 		881106581D6E319200C9835C /* BackEndItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackEndItemsViewController.swift; sourceTree = "<group>"; };
 		8811065A1D6E436C00C9835C /* BackEndItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackEndItemCell.swift; path = Views/BackEndItemCell.swift; sourceTree = "<group>"; };
 		883DC2E71D64DAF90022D4CE /* ShopItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopItem.swift; sourceTree = "<group>"; };
-		883DC2EA1D64FAFF0022D4CE /* CSVDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVDataManager.swift; sourceTree = "<group>"; };
+		883DC2EA1D64FAFF0022D4CE /* CSVStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVStorageManager.swift; sourceTree = "<group>"; };
 		88E9E3401D69D3C400A0E3C3 /* ShopDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDataManager.swift; sourceTree = "<group>"; };
 		88F93BCE1D465B5200B99B7C /* FunBoxTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunBoxTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F93BD11D465B5200B99B7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,7 +124,9 @@
 		88810DCE1D64CD7A0034F084 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				883DC2EA1D64FAFF0022D4CE /* CSVDataManager.swift */,
+				883DC2EA1D64FAFF0022D4CE /* CSVStorageManager.swift */,
+				880E6F921D722D0B0014C35C /* JSONStorageManager.swift */,
+				880E6F941D722DBE0014C35C /* StorageManager.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -294,7 +300,9 @@
 			files = (
 				881106591D6E319200C9835C /* BackEndItemsViewController.swift in Sources */,
 				8811064F1D6CE1B400C9835C /* FrontEndItemViewController.swift in Sources */,
-				883DC2EB1D64FAFF0022D4CE /* CSVDataManager.swift in Sources */,
+				880E6F951D722DBE0014C35C /* StorageManager.swift in Sources */,
+				880E6F931D722D0B0014C35C /* JSONStorageManager.swift in Sources */,
+				883DC2EB1D64FAFF0022D4CE /* CSVStorageManager.swift in Sources */,
 				883DC2E81D64DAF90022D4CE /* ShopItem.swift in Sources */,
 				880E6F8A1D6E6EFB0014C35C /* BackEndItemViewController.swift in Sources */,
 				88F93BD21D465B5200B99B7C /* AppDelegate.swift in Sources */,

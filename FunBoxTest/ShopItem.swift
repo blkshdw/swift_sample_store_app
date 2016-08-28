@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class ShopItem: Object {
+    dynamic var id: String  = NSUUID().UUIDString
     dynamic var title: String = ""
     dynamic var amount: Int = 0
     dynamic var price: Double = 0
@@ -20,10 +21,8 @@ class ShopItem: Object {
 //    return []
 //  }
     
-    enum keyPaths : String {
-        case Title = "title"
-        case Amount = "amount"
-        case Price = "price"
+    override static func primaryKey() -> String? {
+        return "id"
     }
     
     var amountString: String {

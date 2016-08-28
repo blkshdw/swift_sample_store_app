@@ -14,7 +14,7 @@ class BackEndItemViewController: UITableViewController {
     
     var shopItem : ShopItem? = nil
     
-    private var myContext = 0
+    var itemObserver: NSObjectProtocol? = nil
     
     @IBOutlet weak var titleField: UITextField!
     
@@ -56,8 +56,27 @@ class BackEndItemViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        itemObserver =  NSNotificationCenter.defaultCenter().addObserverForName(
+            OBJECT_CHANGED,
+            object: nil, queue: nil,
+            usingBlock: dataChangedHandler)
+
         reloadData()
         
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let observer = self.itemObserver {
+            NSNotificationCenter.defaultCenter().removeObserver(observer)
+        }
+    }
+    
+    func dataChangedHandler(notification: NSNotification) {
+        if let objectId = notification.object as? String where objectId == shopItem?.id {
+            self.reloadData()
+        }
     }
     
     func reloadData() {

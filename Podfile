@@ -9,5 +9,6 @@ target 'FunBoxTest' do
   pod 'RealmSwift'
   pod 'CSwiftV'
   pod 'PromiseKit'
+  pod 'SwiftyJSON'
 
 end

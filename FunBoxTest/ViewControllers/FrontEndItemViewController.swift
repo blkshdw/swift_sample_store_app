@@ -12,11 +12,17 @@ import RealmSwift
 
 class FrontendItemViewController: UITableViewController {
     
-    var shopItem : ShopItem? = nil
+    var shopItem : ShopItem? = nil {
+        didSet {
+            if shopItem != nil {
+            }
+
+        }
+    }
     var itemIndex: Int? = nil
     
-    private var myContext = 0
-    
+    var itemObserver: NSObjectProtocol? = nil
+        
     @IBAction func buyTouchedHandler(sender: AnyObject) {
         if let shopItem = self.shopItem {
             ShopDataManager.instance.buyItem(shopItem)
@@ -33,46 +39,40 @@ class FrontendItemViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        shopItem?.addObserver(self, forKeyPath: ShopItem.keyPaths.Title.rawValue, options: NSKeyValueObservingOptions.Initial, context: &myContext)
-        shopItem?.addObserver(self, forKeyPath: ShopItem.keyPaths.Price.rawValue, options: NSKeyValueObservingOptions.Initial, context: &myContext)
-        shopItem?.addObserver(self, forKeyPath: ShopItem.keyPaths.Amount.rawValue, options: NSKeyValueObservingOptions.Initial, context: &myContext)
     }
     
-    deinit {
-        shopItem?.removeObserver(self, forKeyPath: ShopItem.keyPaths.Title.rawValue)
-        shopItem?.removeObserver(self, forKeyPath: ShopItem.keyPaths.Price.rawValue)
-        shopItem?.removeObserver(self, forKeyPath: ShopItem.keyPaths.Amount.rawValue)
-        
+    func reloadData() {
+        if shopItem?.amount == 0 {
+            itemIsEmptyHandler?(itemIndex)
+        }
+        titleLabel.text = shopItem?.title
+        priceLabel.text = shopItem?.displayPrice
+        amountLabel.text = shopItem?.displayAmount
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+                
+        itemObserver = NSNotificationCenter.defaultCenter().addObserverForName(
+            OBJECT_CHANGED,
+            object: nil, queue: nil,
+            usingBlock: dataChangedHandler)
         
-        titleLabel.text = shopItem?.title
-        priceLabel.text = shopItem?.displayPrice
-        amountLabel.text = shopItem?.displayAmount
-        
+        reloadData()
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        
-        if let keyPath = keyPath {
-            switch keyPath {
-            case ShopItem.keyPaths.Title.rawValue:
-                titleLabel.text = shopItem?.title
-                break
-            case ShopItem.keyPaths.Price.rawValue:
-                priceLabel.text = shopItem?.displayPrice
-                break
-            case ShopItem.keyPaths.Amount.rawValue:
-                if shopItem?.amount == 0 {
-                    itemIsEmptyHandler?(itemIndex)
-                }
-                amountLabel.text = shopItem?.displayAmount
-            default:
-                break
-            }
+    func dataChangedHandler(notification: NSNotification) {
+        if let objectId = notification.object as? String where objectId == shopItem?.id {
+            self.reloadData()
         }
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let observer = self.itemObserver {
+            NSNotificationCenter.defaultCenter().removeObserver(observer)
+        }
+    }
+    
 
 }

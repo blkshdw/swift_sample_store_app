@@ -31,8 +31,8 @@ class CSVDataManager {
                                 
                                 try! uiRealm.write {
                                     uiRealm.add(shopItem)
-                                    try! uiRealm.commitWrite()
                                 }
+
                             }
                             
                             defaults.setBool(true, forKey: "didLoadTestData")
@@ -45,5 +45,5 @@ class CSVDataManager {
             
         }
     }
-    
+        
 }
